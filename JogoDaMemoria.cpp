@@ -1,7 +1,7 @@
 /*
 
-* Programa: Jogo da Memória 1.0
-* Data de Criação: 01/07/2017
+* Programa: Jogo da MemÃ³ria
+* Data de CriaÃ§Ã£o: 01/07/2017
 * Criado por: Luiz Gustavo Nunes
 
 */	
@@ -10,7 +10,7 @@
 #include <stdio.h> // Biblioteca para o printf e scanf.
 #include <stdlib.h> // Biblioteca para o rand() e system cls.
 #include <time.h> // Biblioteca para o srand() e clock.
-#include <locale.h> // Biblioteca para a regionalização.
+#include <locale.h> // Biblioteca para a regionalizaÃ§Ã£o.
 #include <windows.h> // Biblioteca para o sleep.
 
 //Tabuleiro:
@@ -18,20 +18,20 @@
 #define M 8 // Comprimento do Tabuleiro (Colunas).
 #define P 20 // Quantidade de Cartas Diferentes (Metade do Total).
 
-// Váriáveis Globais:
+// VÃ¡riÃ¡veis Globais:
 char GAB[N][M]; // Tabuleiro Gabarito.
 char TAB[N][M]; // Tabuleiro Apresentado.
 char CAR[P] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'}; // Cartas.
-int COL[M]; // Número de Colunas.
-int score=0; // Pontuação.
-int acao=0; // Ações.     
+int COL[M]; // NÃºmero de Colunas.
+int score=0; // PontuaÃ§Ã£o.
+int acao=0; // AÃ§Ãµes.     
 clock_t inicio,fim; // Contador.          
 	           
-// Função p/ Exibir o Menu:
+// FunÃ§Ã£o p/ Exibir o Menu:
 void menu() {
 	printf("\t****************************************************************\n"); 
 	printf("\t****************************************************************\n");
-    printf("\t**                    = Jogo da Memória =                     **\n");
+    printf("\t**                    = Jogo da MemÃ³ria =                     **\n");
     printf("\t** Objetivo: Escolher as cartas e formar seus pares.          **\n");
     printf("\t** O jogador vence quando encontrar todos os pares.           **\n");
     printf("\t** ---------------------------------------------------------- **\n");
@@ -39,11 +39,11 @@ void menu() {
     printf("\t** Para sair, digite qualquer tecla.                          **\n");
 	printf("\t****************************************************************\n"); 
     printf("\t****************************************************************\n");
-	scanf("%d", &acao); // Lê a decisão do jogador.
-	system("cls"); // Limpa a tela após uma ação.
+	scanf("%d", &acao); // LÃª a decisÃ£o do jogador.
+	system("cls"); // Limpa a tela apÃ³s uma aÃ§Ã£o.
 }
 
-// Função p/ Saída do Programa:
+// FunÃ§Ã£o p/ SaÃ­da do Programa:
 void saida() {	
 	float c;
 	fim=clock();
@@ -54,12 +54,12 @@ void saida() {
 		printf ("\n\n\tJogo encerrado.\n\n");
 		else {
 			if (score==20)
-				printf ("\n\tPARABÉNS, VOCÊ GANHOU!"); 
+				printf ("\n\tPARABÃ‰NS, VOCÃŠ GANHOU!"); 
 		printf ("\n\n\t Fim de Jogo.\n\t Score Final: %.2f\n\n", (score/c));
 	}
 }
 
-// Função p/ Esconder as Cartas:
+// FunÃ§Ã£o p/ Esconder as Cartas:
 void esconder() {
 	int i, j;
 	for (i=0; i<N; i++) 
@@ -67,7 +67,7 @@ void esconder() {
 			TAB[i][j]='*';
 }
 
-// Função p/ Inicializar o Tabuleiro:
+// FunÃ§Ã£o p/ Inicializar o Tabuleiro:
 void inicializacao() {
 	int i, j, k=0;
 	for (i=0; i<N; i++)
@@ -81,22 +81,22 @@ void inicializacao() {
 	esconder();
 }
 
-// Função p/ Embaralhar Cartas:
+// FunÃ§Ã£o p/ Embaralhar Cartas:
 void embaralhar () {
 	int i, j, x, y;
 	char aux;
-	srand(time(NULL)); // Gerador de Números Aleatórios.
+	srand(time(NULL)); // Gerador de NÃºmeros AleatÃ³rios.
 	for (i=0; i<N; i++)
 		for (j=0; j<M; j++){
-			x=rand()%N; // Gera Valores Aleatórios de 0 até N.
-			y=rand()%M; // Gera Valores Aleatórios de 0 até M.
+			x=rand()%N; // Gera Valores AleatÃ³rios de 0 atÃ© N.
+			y=rand()%M; // Gera Valores AleatÃ³rios de 0 atÃ© M.
 			aux=GAB[i][j];
 			GAB[i][j]=GAB[x][y];
 			GAB[x][y]=aux;
 		}	
 }
 
-// Função p/ Mostrar Tela de Jogo:
+// FunÃ§Ã£o p/ Mostrar Tela de Jogo:
 void telajogo (int acao) {
 	int i, j;
 	if (acao==1){
@@ -116,26 +116,26 @@ void telajogo (int acao) {
 	}
 }
 
-// Função p/ Atualizar a Tela:
+// FunÃ§Ã£o p/ Atualizar a Tela:
 void atualizartela(int acao) {
 	Sleep (1000); // Para o Programa por 1 Segundo (1000ms).
 	system ("cls");
 	telajogo(acao);
 }
 
-// Função p/ Execução do Jogo:
+// FunÃ§Ã£o p/ ExecuÃ§Ã£o do Jogo:
 void jogar (int acao) {
 	int i, j, x, y, virar=0, checar=1;
 	while (score<20 && acao==1){ 
 		do {   			
-			printf ("\n> Informe as Coordenadas (Linha Coluna) da 1ª Carta: ");
+			printf ("\n> Informe as Coordenadas (Linha Coluna) da 1Âª Carta: ");
 			scanf ("%d %d", &i, &j);
 			if (i<0 || j<0){
 				acao=-1;
 				break;
 			}
 			if (i>=N || j>=M){
-				printf ("Coordenada Inválida!");
+				printf ("Coordenada InvÃ¡lida!");
 				checar=0;
 				atualizartela(acao);
 			}
@@ -148,21 +148,21 @@ void jogar (int acao) {
 				virar++;
 			}
 				else if (checar==1){
-						printf ("Esta carta já foi escolhida!");
+						printf ("Esta carta jÃ¡ foi escolhida!");
 						atualizartela(acao);
 					}
 		} while (virar<1);
 		if (acao<0)
 			break;
 		do {
-			printf ("\n> Informe as Coordenadas (Linha Coluna) da 2ª Carta: ");
+			printf ("\n> Informe as Coordenadas (Linha Coluna) da 2Âª Carta: ");
 			scanf ("%d %d", &x, &y);	
 			if (x<0 || y<0){
 				acao=-1;
 				break;
 			}
 			if (x>=N || y>=M){
-				printf ("Coordenada Inválida!");
+				printf ("Coordenada InvÃ¡lida!");
 				checar=0;
 				atualizartela(acao);
 			}
@@ -176,7 +176,7 @@ void jogar (int acao) {
 			}
 				else 
 					if (checar==1){
-						printf ("Esta carta já foi escolhida!");
+						printf ("Esta carta jÃ¡ foi escolhida!");
 						atualizartela(acao);	
 	 				}
 		} while (virar<2);	
@@ -185,7 +185,7 @@ void jogar (int acao) {
 		if (TAB[i][j]==TAB[x][y]){
 			virar=0; 
 			score++;
-			printf ("\n\t\t\t\t  É Par!");
+			printf ("\n\t\t\t\t  Ã‰ Par!");
 			Sleep (500); // Para o Programa por Meio Segundo (500ms).
 		}
 			else { 
@@ -199,13 +199,13 @@ void jogar (int acao) {
  	}
 }
 
-// Função Principal:
+// FunÃ§Ã£o Principal:
 int main() {
-	// Comando de Regionalização:
+	// Comando de RegionalizaÃ§Ã£o:
 	setlocale(LC_ALL, "Portuguese");
-	// Título do Programa:
+	// TÃ­tulo do Programa:
 	SetConsoleTitle("Jogo da Memoria 1.0");
-	// Ordem de Execução:
+	// Ordem de ExecuÃ§Ã£o:
 	inicializacao();
 	embaralhar();
 	menu();
